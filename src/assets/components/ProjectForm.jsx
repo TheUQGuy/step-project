@@ -1,6 +1,7 @@
 import useState from 'react';
 import MilestoneForm from './MilestoneForm';
 import { useNavigate } from 'react-router-dom';
+import { v4 as uuid } from 'uuid';
 function ProjectForm() {
   //Form Data
   const [projName, setName] = useState('');
@@ -26,7 +27,24 @@ function ProjectForm() {
     //Redirect to home page
     navigate('/');
   };
-  const createProject = () => {};
+  const createProject = (e) => {
+    e.preventDefault();
+    const project = {
+      id: uuid(),
+      projName,
+      description,
+      estimate: { value: +duration, interval },
+      projDate,
+      milestones: milestones,
+      createdAt: new Date().toISOString(),
+    };
+    try {
+      window.api.saveProject(project);
+      navigate('/');
+    } catch (err) {
+      console.error(err);
+    }
+  };
   return (
     <form onSubmit={createProject}>
       <div>
