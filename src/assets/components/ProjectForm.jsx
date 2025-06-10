@@ -1,5 +1,5 @@
 import useState from 'react';
-import MilestoneForm from './MilestoneForm';
+import Milestones from './Milestones';
 import { useNavigate } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 function ProjectForm() {
@@ -101,7 +101,7 @@ function ProjectForm() {
           onChange={(e) => setProjDate(e.target.value)}
         />
       </div>
-      <MilestoneForm milestones={milestones} setMilestones={setMilestones} />
+      <Milestones milestones={milestones} setMilestones={setMilestones} />
       <div>
         <button type='button' onClick={cancelForm}>
           Cancel
