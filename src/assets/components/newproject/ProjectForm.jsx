@@ -1,5 +1,5 @@
 import useState from 'react';
-import Milestones from './Milestones';
+import Milestones from '../newmilestone/Milestones';
 import { useNavigate } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 function ProjectForm() {
@@ -29,6 +29,7 @@ function ProjectForm() {
   };
   const createProject = (e) => {
     e.preventDefault();
+    //Generate a project structure using the unique uuid
     const project = {
       id: uuid(),
       projName,
@@ -38,6 +39,7 @@ function ProjectForm() {
       milestones: milestones,
       createdAt: new Date().toISOString(),
     };
+    //Attempt to save the folder using electron
     try {
       window.api.saveProject(project);
       navigate('/');

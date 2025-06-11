@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import MilestoneGraph from './MilestoneGraph';
+import MilestoneGraph from '../graph/MilestoneGraph';
 
 function MilestoneForm() {
   const [showForm, setShowMilestoneForm] = useState(false);
